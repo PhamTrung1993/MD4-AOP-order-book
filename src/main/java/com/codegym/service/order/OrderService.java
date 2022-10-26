@@ -1,0 +1,40 @@
+package com.codegym.service.order;
+
+import com.codegym.model.Order;
+import com.codegym.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class OrderService implements IOrderService{
+    @Autowired
+    OrderRepository orderRepository;
+
+    @Override
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public Optional<Order> findById(Long id) {
+        return orderRepository.findById(id);
+    }
+
+    @Override
+    public void save(Order order) {
+        orderRepository.save(order);
+    }
+
+    @Override
+    public void delete(Order order) {
+        orderRepository.delete(order);
+    }
+
+    @Override
+    public Order findByOrderCode(int orderCode) {
+        return orderRepository.findByOrderCode(orderCode);
+    }
+}
